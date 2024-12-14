@@ -88,7 +88,23 @@ public String searchBatch(@RequestParam("batchNumber") String batchNumber,Model 
 	}
 	
 	
+	@RequestMapping("/batch")
+	public String onBatchChange(@RequestParam("id") int id,Model m) {
+		
+		    Student st=ssi.getSingleStudent(id);
+		    List<Student> list=ssi.getAllStudents();
+		m.addAttribute("st", st);
+		m.addAttribute("data", list);
+		return "batch";
+	}
 	
+	@RequestMapping("/batchshift")
+	public String payFees(@RequestParam("studentid") int studentid,@RequestParam("batchNumber") String  batchNumber,Model m) {
+		
+		List<Student> list=ssi.updateStudentBatch(studentid,batchNumber);
+		m.addAttribute("data", list);
+		return "adminscreen";
+	}
 	
 	
 	

@@ -11,4 +11,6 @@ public interface StudentRepositary extends CrudRepository<Student,Integer>{
 
 	
 	public List<Student> findAllByBatchNumber(String batchNumber);
+	
+	
 }
